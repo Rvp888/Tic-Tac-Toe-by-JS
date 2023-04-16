@@ -29,6 +29,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 .cell:first-child,
@@ -53,8 +54,36 @@ body {
 
 .cell.x::before,
 .cell.x::after {
+    position: absolute;
     content: "";
     width: calc(var(--mark-size) * 0.15);
     height: var(--mark-size);
     background-color: black;
+}
+
+.cell.x::before {
+    transform: rotate(45deg);
+}
+
+.cell.x::after {
+    transform: rotate(-45deg);
+}
+
+.cell.circle::before,
+.cell.circle::after {
+    position: absolute;
+    content: "";
+    border-radius: 50%;
+}
+
+.cell.circle::before {
+    width: var(--mark-size);
+    height: var(--mark-size);
+    background-color: black;
+}
+
+.cell.circle::after {
+    width: calc(var(--mark-size) * 0.7);
+    height: calc(var(--mark-size) * 0.7);
+    background-color: white;
 }
