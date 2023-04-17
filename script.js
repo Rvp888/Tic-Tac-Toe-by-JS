@@ -13,6 +13,7 @@ const WINNING_COMBINATIONS = [
 
 const board = document.getElementById('board');
 const cellElements = document.querySelectorAll('[data-cell]');
+const winningMessageElement = document.getElementById('winningMessage');
 const winningMessageTextElement = document.querySelector('[data-winning-message-text]');
 
 let circleTurn;
@@ -46,6 +47,7 @@ function endGame(draw) {
     } else {
         winningMessageTextElement.innerText = `${circleTurn ? "O's" : "X's"} Wins!`
     }
+    winningMessageElement.classList.add('show');
 }
 
 function placeMark(cell, currentClass) {
