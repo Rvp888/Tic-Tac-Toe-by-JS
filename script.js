@@ -1,6 +1,7 @@
 const X_CLASS = 'x';
 const CIRCLE_CLASS = 'circle';
 
+const board = document.getElementById('board');
 const cellElements = document.querySelectorAll('[data-cell]');
 
 let circleTurn;
@@ -14,6 +15,7 @@ function handleClick(e) {
     const currentClass = circleTurn ? CIRCLE_CLASS : X_CLASS;
     placeMark(cell, currentClass);
     swapTurns();
+    setBoardHoverClass();
 }
 
 function placeMark(cell, currentClass) {
@@ -22,4 +24,9 @@ function placeMark(cell, currentClass) {
 
 function swapTurns() {
     circleTurn = !circleTurn;
+}
+
+function setBoardHoverClass() {
+    board.classList.remove(X_CLASS);
+    board.classList.remove(CIRCLE_CLASS);
 }
