@@ -32,6 +32,9 @@ function handleClick(e) {
     const cell = e.target;
     const currentClass = circleTurn ? CIRCLE_CLASS : X_CLASS;
     placeMark(cell, currentClass);
+    if (checkWin(currentClass)) {
+
+    }
     swapTurns();
     setBoardHoverClass();
 }
@@ -52,4 +55,12 @@ function setBoardHoverClass() {
     } else {
         board.classList.add(X_CLASS);
     }
+}
+
+function checkWin(currentClass) {
+    return WINNING_COMBINATIONS.some(combination => {
+        return combination.every(index => {
+            return cellElements[index].classList.contains(currentClass)
+        })
+    })
 }
