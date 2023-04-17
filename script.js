@@ -15,14 +15,21 @@ const board = document.getElementById('board');
 const cellElements = document.querySelectorAll('[data-cell]');
 const winningMessageElement = document.getElementById('winningMessage');
 const winningMessageTextElement = document.querySelector('[data-winning-message-text]');
+const restartButton = document.getElementById('restartButton');
 
 let circleTurn;
 
 startGame();
 
+restartButton.addEventListener('click', startGame);
+
 function startGame() {
+    winningMessageElement.classList.remove('show');
     circleTurn = false;
     cellElements.forEach(cell => {
+        cell.classList.remove(X_CLASS);
+        cell.classList.remove(CIRCLE_CLASS);
+        cell.removeEventListener('click', handleClick)
         cell.addEventListener('click', handleClick, { once: true })
     })
     setBoardHoverClass();
